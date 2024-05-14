@@ -13,14 +13,14 @@ image_links = {
             "https://aisip-mvp-science-problems.s3.ap-northeast-2.amazonaws.com/earth_science/level1/earth1_3.png",
         ],
         2: [
-            "https://aisip-mvp-science-problems.s3.ap-northeast-2.amazonaws.com/earth_science/level1/earth2_1.png",
-            "https://aisip-mvp-science-problems.s3.ap-northeast-2.amazonaws.com/earth_science/level1/earth2_2.png",
-            "https://aisip-mvp-science-problems.s3.ap-northeast-2.amazonaws.com/earth_science/level1/earth2_3.png",
+            "https://aisip-mvp-science-problems.s3.ap-northeast-2.amazonaws.com/earth_science/level2/earth2_1.png",
+            "https://aisip-mvp-science-problems.s3.ap-northeast-2.amazonaws.com/earth_science/level2/earth2_2.png",
+            "https://aisip-mvp-science-problems.s3.ap-northeast-2.amazonaws.com/earth_science/level2/earth2_3.png",
         ],
         3: [
-            "https://aisip-mvp-science-problems.s3.ap-northeast-2.amazonaws.com/earth_science/level1/earth3_1.png",
-            "https://aisip-mvp-science-problems.s3.ap-northeast-2.amazonaws.com/earth_science/level1/earth3_2.png",
-            "https://aisip-mvp-science-problems.s3.ap-northeast-2.amazonaws.com/earth_science/level1/earth3_3.png",
+            "https://aisip-mvp-science-problems.s3.ap-northeast-2.amazonaws.com/earth_science/level3/earth3_1.png",
+            "https://aisip-mvp-science-problems.s3.ap-northeast-2.amazonaws.com/earth_science/level3/earth3_2.png",
+            "https://aisip-mvp-science-problems.s3.ap-northeast-2.amazonaws.com/earth_science/level3/earth3_3.png",
         ]
     },
     "life_science": {
@@ -30,14 +30,14 @@ image_links = {
             "https://aisip-mvp-science-problems.s3.ap-northeast-2.amazonaws.com/life_science/level1/life1_3.png",
         ],
         2: [
-            "https://aisip-mvp-science-problems.s3.ap-northeast-2.amazonaws.com/life_science/level1/life2_1.png",
-            "https://aisip-mvp-science-problems.s3.ap-northeast-2.amazonaws.com/life_science/level1/life2_2.png",
-            "https://aisip-mvp-science-problems.s3.ap-northeast-2.amazonaws.com/life_science/level1/life2_3.png",
+            "https://aisip-mvp-science-problems.s3.ap-northeast-2.amazonaws.com/life_science/level2/life2_1.png",
+            "https://aisip-mvp-science-problems.s3.ap-northeast-2.amazonaws.com/life_science/level2/life2_2.png",
+            "https://aisip-mvp-science-problems.s3.ap-northeast-2.amazonaws.com/life_science/level2/life2_3.png",
         ],
         3: [
-            "https://aisip-mvp-science-problems.s3.ap-northeast-2.amazonaws.com/life_science/level1/life3_1.png",
-            "https://aisip-mvp-science-problems.s3.ap-northeast-2.amazonaws.com/life_science/level1/life3_2.png",
-            "https://aisip-mvp-science-problems.s3.ap-northeast-2.amazonaws.com/life_science/level1/life3_3.png",
+            "https://aisip-mvp-science-problems.s3.ap-northeast-2.amazonaws.com/life_science/level3/life3_1.png",
+            "https://aisip-mvp-science-problems.s3.ap-northeast-2.amazonaws.com/life_science/level3/life3_2.png",
+            "https://aisip-mvp-science-problems.s3.ap-northeast-2.amazonaws.com/life_science/level3/life3_3.png",
         ]
     },
 }
@@ -125,8 +125,8 @@ def calculate_feedback_and_score(problem_id: int, selections: List[str]):
     prev_percentage = problem_data.get(prev_problem_id, {}).get("percentage", 0)
     prev_grade = problem_data.get(prev_problem_id, {}).get("grade", 0)
 
-    percentage_diff = percentage - prev_percentage
-    grade_diff = prev_grade - grade
+    percentage_diff = percentage - prev_percentage if is_correct else 0
+    grade_diff = prev_grade - grade if is_correct else 0
 
     return {
         "feedback": feedback,
