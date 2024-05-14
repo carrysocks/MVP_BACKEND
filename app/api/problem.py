@@ -106,7 +106,7 @@ def calculate_feedback_and_score(problem_id: int, selections: List[str]):
     if is_correct:
         feedback = "정답입니다! 잘하셨어요."
     else:
-        feedback = f"아쉽게도 틀렸습니다. 정답은 {', '.join(problem_data[problem_id]['answer'])}입니다."
+        feedback = "아쉽게도 틀렸습니다."
 
     accuracy = problem_data[problem_id]["accuracy"]
     if accuracy >= 90:
@@ -155,6 +155,5 @@ def get_problem_feedback(problem_id: int, request: FeedbackRequest):
         raise HTTPException(status_code=404, detail="Problem not found")
 
     feedback_response = calculate_feedback_and_score(problem_id, request.selections)
-    print(feedback_response)
     return feedback_response
 
