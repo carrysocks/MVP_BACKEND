@@ -10,7 +10,8 @@ app.include_router(user.router, tags=["Users"])
 
 origins = [
     "http://localhost",
-    "http://localhost:3000"
+    "http://localhost:3000",
+    "http://aisip-front.s3-website.ap-northeast-2.amazonaws.com"
 ]
 
 app.add_middleware(
